@@ -3,10 +3,10 @@
 This library makes usage of https://www.dogratian.com sensors easy
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/netinvent/usb_sensors.svg)](http://isitmaintained.com/project/netinvent/usb_sensors "Percentage of issues still open")
-[![linux-tests](https://github.com/netinvent/usb_sensors/actions/workflows/linux.yaml/badge.svg)](https://github.com/netinvent/usb_sensors/actions/workflows/linux.yaml)
-[![windows-tests](https://github.com/netinvent/usb_sensors/actions/workflows/windows.yaml/badge.svg)](https://github.com/netinvent/usb_sensors/actions/workflows/windows.yaml)
-[![GitHub Release](https://img.shields.io/github/release/netinvent/usb_sensors.svg?label=Latest)](https://github.com/netinvent/usb_sensors/releases/latest)
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/netinvent/dogratian_usb_sensors.svg)](http://isitmaintained.com/project/netinvent/dogratian_usb_sensors "Percentage of issues still open")
+[![linux-tests](https://github.com/netinvent/dogratian_usb_sensors/actions/workflows/linux.yaml/badge.svg)](https://github.com/netinvent/dogratian_usb_sensors/actions/workflows/linux.yaml)
+[![windows-tests](https://github.com/netinvent/dogratian_usb_sensors/actions/workflows/windows.yaml/badge.svg)](https://github.com/netinvent/dogratian_usb_sensors/actions/workflows/windows.yaml)
+[![GitHub Release](https://img.shields.io/github/release/netinvent/dogratian_usb_sensors.svg?label=Latest)](https://github.com/netinvent/dogratian_usb_sensors/releases/latest)
 
 Setup:
 `pip install dogratian_usb_sensors`  # Future if DogRatIan agrees 
