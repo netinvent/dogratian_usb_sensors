@@ -9,7 +9,7 @@ This library makes usage of https://www.dogratian.com sensors easy
 [![GitHub Release](https://img.shields.io/github/release/netinvent/dogratian_usb_sensors.svg?label=Latest)](https://github.com/netinvent/dogratian_usb_sensors/releases/latest)
 
 Setup:
-`pip install dogratian_usb_sensors`  # Future if DogRatIan agrees 
+`pip install dogratian_usb_sensors`
 
 Quick Usage:
 ```python
