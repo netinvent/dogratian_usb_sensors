@@ -70,9 +70,15 @@ class USBSensor:
             self._available_read_cmds = ["GI", "GV", "GT", "GH", "GP", "GN", "GJSON"]
         elif self.model.startswith("USB-VOC"):
             self._available_read_cmds = ["GI", "GV", "GVOC", "GCO2", "GN", "GJSON"]
-        
+
         self._available_write_cmds = ["I", "N"]
-        self._json_map_table = {"T": "temperature", "H": "humidity", "P": "pressure", "TVOC": "tvoc", "CO2eq": "co2eq"}
+        self._json_map_table = {
+            "T": "temperature",
+            "H": "humidity",
+            "P": "pressure",
+            "TVOC": "tvoc",
+            "CO2eq": "co2eq",
+        }
 
         # Let's set the LED status once the sensor is initialized properly
         self.led = state_led
@@ -206,7 +212,7 @@ class USBSensor:
             return float(data)
         except TypeError:
             return data
- 
+
     @property
     def all(self):
         # type:  () -> dict

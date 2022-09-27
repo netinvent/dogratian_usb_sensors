@@ -4,15 +4,16 @@
 # This file is part of dogratian_usb_sensors module
 
 __intname__ = "usb_dogratian_sensors_tests"
-__author__ = 'Orsiris de Jong'
-__copyright__ = 'Copyright (C) 2022 Orsiris de Jong'
-__licence__ = 'BSD 3 Clause'
-__build__ = '2022092701'
+__author__ = "Orsiris de Jong"
+__copyright__ = "Copyright (C) 2022 Orsiris de Jong"
+__licence__ = "BSD 3 Clause"
+__build__ = "2022092701"
 
 
 import os
 import sys
 from time import sleep
+
 try:
     from dogratian_usb_sensors import USBSensor
 except ImportError:  # in python 3+ it would be ModuleNotFoundError
@@ -37,17 +38,21 @@ def test_usb_sensors():
                     humidity = sensor.humidity
                     print("Current temperature: {} °C".format(temperature))
                     print("Current humidity: {} %".format(humidity))
-                    assert isinstance(temperature, float), 'Temperature should be a float'
-                    assert isinstance(humidity, float), 'Humidity should be a float'
+                    assert isinstance(
+                        temperature, float
+                    ), "Temperature should be a float"
+                    assert isinstance(humidity, float), "Humidity should be a float"
                 if sensor.model == "USB-PA":
                     pressure = sensor.pressure
                     print("Current pressure: {} %".format(pressure))
-                    assert isinstance(pressure, float), 'Pressure should be a float'
+                    assert isinstance(pressure, float), "Pressure should be a float"
                 if sensor.model not in ["USB-TnH", "USB-PA"]:
                     result = sensor.all
                     print("Readings: {}".format(result))
                     for element in result:
-                        assert isinstance(result[element], float), "Result should only contain floats"
+                        assert isinstance(
+                            result[element], float
+                        ), "Result should only contain floats"
                 sleep(0.1)
                 count += 1
                 if count == 2:
@@ -55,7 +60,11 @@ def test_usb_sensors():
                 if count == 3:
                     sensor.led = False
         except PermissionError as exc:
-            print("We don't have permission to use serial ports: {}. This can also happen if port is already open.".format(exc))
+            print(
+                "We don't have permission to use serial ports: {}. This can also happen if port is already open.".format(
+                    exc
+                )
+            )
 
 
 if __name__ == "__main__":
