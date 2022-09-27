@@ -22,7 +22,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install --upgrade setuptools
-        if [ -f usb_sensors/requirements.txt ]; then pip install -r usb_sensors/requirements.txt; fi
+        if [ -f dogratian_usb_sensors/requirements.txt ]; then pip install -r dogratian_usb_sensors/requirements.txt; fi
     - name: Generate Report
       env:
         RUNNING_ON_GITHUB_ACTIONS: true
