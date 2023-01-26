@@ -4,10 +4,10 @@
 
 __intname__ = "dogratian_usb_sensors"
 __author__ = "Orsiris de Jong"
-__copyright__ = "Copyright (C) 2022 Orsiris de Jong - NetInvent SASU"
+__copyright__ = "Copyright (C) 2022-2023 Orsiris de Jong - NetInvent SASU"
 __licence__ = "BSD 3 Clause"
-__version__ = "1.1"
-__build__ = "2022092701"
+__version__ = "1.1.1"
+__build__ = "2023012601"
 __compat__ = "python2.7+"
 
 
@@ -20,11 +20,10 @@ from logging import getLogger
 import serial.tools.list_ports
 import serial
 import json
-from contextlib import contextmanager
 from threading import Lock
 
 
-LOCK = None
+LOCK = Lock()
 
 # DogRatIan USB sensor ID
 USB_VID = "0x03EB"
@@ -40,20 +39,6 @@ SERIAL_SETTINGS = {
 
 
 logger = getLogger(__name__)
-
-
-@contextmanager
-def _with_Lock():
-    # This is a singleton, pylint: disable=global-statement
-    global LOCK
-
-    if LOCK is None:
-        LOCK = Lock()
-
-    LOCK.acquire()
-    yield
-    if LOCK is not None:
-        LOCK.release()
 
 
 class USBSensor:
@@ -113,7 +98,7 @@ class USBSensor:
         if command not in self._available_read_cmds:
             raise ValueError('Invalid command requested: "{}"'.format(command))
         try:
-            with _with_Lock():
+            with LOCK:
                 with serial.Serial(self._port, timeout=0.1, **SERIAL_SETTINGS) as ser:
                     # Dummy write to clean rubbish
                     ser.write("\r\n\r\n".encode("utf-8"))
@@ -137,7 +122,7 @@ class USBSensor:
         if command not in self._available_write_cmds:
             raise ValueError('Invalid command requested: "{}"'.format(command))
         try:
-            with _with_Lock():
+            with LOCK:
                 with serial.Serial(self._port, timeout=0.1, **SERIAL_SETTINGS) as ser:
                     # Dummy write to clean rubbish
                     ser.write("\r\n\r\n".encode("utf-8"))
